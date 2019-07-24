@@ -16,5 +16,4 @@ body {
 .player-screen {
   width: calc(50% - 8px);
   height: 99vh;
-  background: red;
 }
