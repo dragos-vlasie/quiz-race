@@ -55,6 +55,7 @@ class Question extends Component {
         playerScore: this.incrementNumber(this.state.playerScore)
       }) 
     } else {
+
       console.log('de cact:', "subtract")
 
       this.setState({
@@ -62,6 +63,9 @@ class Question extends Component {
       }) 
     }
 
+    if(questionCurrentNumber === 9) {
+  
+    }
     this.setState({
       questionNumber: this.incrementNumber(questionCurrentNumber)
     }) 
@@ -77,7 +81,7 @@ class Question extends Component {
     return decrement;
   }
 
-  renderFirstQuestion(number) {
+  renderQuestion(number) {
     const questions  = this.state.events;
     let allAnswers
     if(questions.length){
@@ -102,15 +106,30 @@ class Question extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <p>{this.state.playerScore}</p>
-        <div className='question'>
-          { !this.state.isHidden ? <button onClick={this.showQuestion}>Start</button> : null }
-          { this.state.isHidden ? this.renderFirstQuestion(this.state.questionNumber) : null }
+    
+    if(this.state.questionNumber !== 9) {
+      return (
+        <div>
+          <p><span>Score</span> {this.state.playerScore}</p>
+          <div className='question'>
+            { !this.state.isHidden ? <button onClick={this.showQuestion}>Start</button> : null }
+            { this.state.isHidden ? this.renderQuestion(this.state.questionNumber) : null }
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return (
+        <div>
+          <p><span>Score</span> {this.state.playerScore}</p>
+          <div>Choose the next category</div>
+          <div>
+            <button>Options1</button>
+            <button>Options1</button>
+            <button>Options3</button>
+          </div>
+        </div>
+      )
+    }
   }
 }
 
