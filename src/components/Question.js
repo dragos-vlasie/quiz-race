@@ -48,7 +48,7 @@ class Question extends Component {
     let chosenAnswer = event.target.innerText;
     let correctAnswer = questions[questionCurrentNumber].correct_answer;
 
-    if(correctAnswer == chosenAnswer) {
+    if(correctAnswer === chosenAnswer) {
       console.log('SUCCESS:', "add to the score")
 
       this.setState({
