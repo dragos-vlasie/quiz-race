@@ -8,7 +8,7 @@ class Question extends Component {
       isHidden: false,
       questionNumber: 0,
       playerScore: 0
-    };
+    }
   }
 
   componentDidMount() {
@@ -51,7 +51,7 @@ class Question extends Component {
     let chosenAnswer = event.target.innerText;
     let correctAnswer = questions[questionCurrentNumber].correct_answer;
 
-    if (correctAnswer === chosenAnswer) {
+    if (this.encoding(correctAnswer) === chosenAnswer) {
       console.log("SUCCESS:", "add to the score");
 
       this.setState({
@@ -83,17 +83,6 @@ class Question extends Component {
     decrement--;
     return decrement;
   };
-
-  // progress() {
-  //   var elem = document.getElementById("myBar");
-  //   var width = (this.state.playerScore + 1) * 10;
-  //   console.log("width:", width);
-  //   if (width) {
-  //     elem.style.width = width + "%";
-  //   } else {
-  //     elem.style.width = "10%";
-  //   }
-  // }
 
   renderQuestion(number) {
     const questions = this.state.events;
@@ -130,7 +119,7 @@ class Question extends Component {
         <div class="container">
           <div class="feedback">
             <h4 class="left">
-              Time Left: <span id="time">0</span>
+              Time Left: <span id="time">60</span>
             </h4>
             <h4 class="right">
               Score: <span id="score">{this.state.playerScore}</span>
